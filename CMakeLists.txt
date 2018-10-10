@@ -13,4 +13,4 @@ pods_install_python_packages(${CMAKE_CURRENT_SOURCE_DIR}/python)
 # install a script "hello-python" that runs the hello.main python module
 # This script gets installed to ${CMAKE_INSTALL_PREFIX}/bin/hello-python
 # and automatically sets the correct python path.
-pods_install_python_script(host-status host_status)
+pods_install_python_script(host-status utils.host_status)
