@@ -5,7 +5,7 @@ import sys
 import os
 
 from lcm import LCM
-from ripl.host_status_t import host_status_t
+from syslcm.host_status_t import host_status_t
 
 lcm = LCM()
 
@@ -47,7 +47,7 @@ while (True):
             cpufreq_info_limits = os.popen(cpufreq_info_str).readline()
             msg.max_cpu_freq_hz += [int(cpufreq_info_limits)*1000]
 
-        
+
             cpufreq_info_str = 'cpufreq-info -f -c %d' % i
             cpufreq_info_current = os.popen(cpufreq_info_str).readline()
             msg.cur_cpu_freq_hz += [int(cpufreq_info_current)*1000]
@@ -71,7 +71,7 @@ while (True):
     msg.battery_charge = []
     for i in range(0,len(bat_info)):
         b = bat_info[i].split()
-        msg.battery_charge.append(float(b[3].rstrip('%,')) * 0.01)        
+        msg.battery_charge.append(float(b[3].rstrip('%,')) * 0.01)
 
     lcm.publish("HOST_STATUS", msg.encode())
     time.sleep(1)
